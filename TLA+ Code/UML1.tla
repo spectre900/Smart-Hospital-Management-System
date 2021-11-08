@@ -38,20 +38,6 @@ Login ==
         /\ attempt' = attempt + 1
         /\ UNCHANGED <<loggedIn>>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Scan == 
     \/  /\ loggedIn = "yes"
         /\ rfidScan = "notDone"
@@ -68,50 +54,6 @@ Scan ==
         /\ UNCHANGED <<rfidScan, patientInfo>>
     \/  /\ loggedIn = "no"
         /\ UNCHANGED <<rfidScan, patientInfo>>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Diagnosis == 
     \/  /\ patientInfo = "retrieved"
@@ -139,14 +81,9 @@ Diagnosis ==
     \/  /\ patientInfo = "retrieved"
         /\ symptomsChecked = "yes"
         /\ testNeeded = "no"
-        /\ UNCHANGED <<symptomsChecked, testNeeded>>
-        /\ UNCHANGED <<addedToDB>>
+        /\ UNCHANGED <<symptomsChecked, testNeeded, addedToDB>>
     \/  /\ patientInfo = "notRetrieved"
-        /\ UNCHANGED <<symptomsChecked, testNeeded>>
-        /\ UNCHANGED <<addedToDB>>
-        
-        
-        
+        /\ UNCHANGED <<symptomsChecked, testNeeded, addedToDB>>
 
 Next ==
     /\ Login
@@ -155,7 +92,8 @@ Next ==
     /\ TypeOK
     
 Spec == Init /\ [][Next]_Var
+
 =============================================================================
 \* Modification History
-\* Last modified Tue Oct 05 00:26:14 IST 2021 by ubuntu
-\* Created Fri Sep 17 19:51:02 IST 2021 by ubuntu
+\* Last modified Mon Nov 08 20:02:45 IST 2021 by ubuntu
+\* Created Mon Nov 08 20:02:07 IST 2021 by ubuntu
